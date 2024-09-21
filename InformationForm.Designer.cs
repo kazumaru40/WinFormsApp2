@@ -30,7 +30,7 @@
         {
             pictureBox1 = new PictureBox();
             button1 = new Button();
-            textBox1 = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -54,20 +54,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox1
+            // label1
             // 
-            textBox1.Location = new Point(387, 176);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(400, 151);
-            textBox1.TabIndex = 3;
+            label1.Font = new Font("Yu Gothic UI", 14F);
+            label1.Location = new Point(387, 171);
+            label1.Name = "label1";
+            label1.Size = new Size(400, 150);
+            label1.TabIndex = 3;
+            label1.Text = "label1";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // InformationForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 853);
-            Controls.Add(textBox1);
+            Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
             Name = "InformationForm";
@@ -75,12 +78,11 @@
             Load += InformationForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private PictureBox pictureBox1;
         private Button button1;
-        private TextBox textBox1;
+        private Label label1;
     }
 }
