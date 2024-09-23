@@ -14,6 +14,7 @@ namespace WinFormsApp2
 {
     public partial class SelectForm : Form
     {
+
         public SelectForm()
         {
             InitializeComponent();
@@ -36,20 +37,20 @@ namespace WinFormsApp2
 
         }
 
+        private int i = 0; // 変数iでループ
+        private List<string> questions = new List<string>(); // 質問を格納するリストを作成
+
         private void SelectForm_Load(object sender, EventArgs e)
         {
-
             try
             {
                 using var sql = Rdb.Conn.CreateCommand();
-                sql.CommandText = "SELECT TOP 1 Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'A' ORDER BY Q_NO;";
-
+                sql.CommandText = "SELECT Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'A' ORDER BY Q_NO";
 
                 using var reader = sql.ExecuteReader();
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    label1.Text = reader["Q_TEXT"].ToString();  //Q_TEXTを表示
-
+                    questions.Add(reader["Q_TEXT"].ToString());
                 }
             }
             catch (SqlException ex)
@@ -57,24 +58,65 @@ namespace WinFormsApp2
                 Rdb.ErrorMessage(ex);
             }
 
+            // 最初の質問を表示
+            if (questions.Count > 0)
+            {
+                NextQuestion();
+            }
+
+        }
+
+        private void NextQuestion()　　        // 質問を表示するメソッドを作成
+        {
+            if (i < questions.Count)
+            {
+                label1.Text = questions[i];    //配列iを表示
+                i++; 　　　　　　　　　　　　　// i++で次の質問へ
+            }
+            else
+            {
+                // 全部表示した後の処理
+                MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");　//メッセージ表示
+                InformationForm informationForm = new InformationForm();　//次のフォームに遷移
+                informationForm.Show();
+                this.Hide();
+
+            }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radioButton1.Checked)
+            {
+                NextQuestion();
+            }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radioButton2.Checked)
+            {
+                NextQuestion();
+            }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radioButton3.Checked)
+            {
+                NextQuestion();
+            }
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                NextQuestion();
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

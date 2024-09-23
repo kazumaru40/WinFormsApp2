@@ -41,7 +41,7 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Yu Gothic UI", 12F);
-            label1.Location = new Point(358, 153);
+            label1.Location = new Point(335, 156);
             label1.Name = "label1";
             label1.Size = new Size(500, 300);
             label1.TabIndex = 0;
@@ -99,12 +99,13 @@
             groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton3);
-            groupBox1.Location = new Point(245, 513);
+            groupBox1.Location = new Point(232, 539);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(697, 140);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "当てはまるものを選んでください";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // SelectForm
             // 
