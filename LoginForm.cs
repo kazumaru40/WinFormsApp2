@@ -46,14 +46,14 @@ namespace WinFormsApp2
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)　//password入力
         {
-            loginbtn.Enabled = true;      //パスワードに文字が入力されるとログインボタンが有効になる
-            textBox1.PasswordChar = '*';　//パスワードの文字を伏字にする
+            loginbtn.Enabled = true;      //文字が入力されるとログインボタンが有効になる
+            textBox1.PasswordChar = '*';　//文字を伏字にする
         }
 
 
         private void button1_Click(object sender, EventArgs e) //ログインボタン
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))　//Stringクラスのメソッドなのでstring.を前につける
+            if (string.IsNullOrWhiteSpace(textBox1.Text))　
             {
                 MessageBox.Show("IDとパスワードを入力してください。");
                 return;
@@ -68,9 +68,9 @@ namespace WinFormsApp2
 
                 using var reader = sql.ExecuteReader();
                 
-                if (reader.Read())
+                if (reader.Read())　//コネクションを開く
                 {
-                    reader.Close();
+                    reader.Close(); // コネクションを閉じる
                     // ログイン成功
                     MessageBox.Show("ログイン成功しました！");
                     InformationForm informationForm = new InformationForm(); // 遷移先のフォームをインスタンス化

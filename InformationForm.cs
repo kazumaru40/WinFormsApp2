@@ -37,6 +37,7 @@ namespace WinFormsApp2
 
                 using var reader = sql.ExecuteReader();
                 if (reader.Read())
+
                 {
                     label1.Text = reader["TITLE"].ToString(); // TITLE列の値を取得
 
@@ -50,6 +51,9 @@ namespace WinFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SelectForm selectFrom = new SelectForm();
+            selectFrom.Show();
+            this.Hide();
 
         }
 
