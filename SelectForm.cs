@@ -25,7 +25,7 @@ namespace WinFormsApp2
             this.Controls.Add(headerForm);
             headerForm.Show();
 
-            FooterForm footerForm = new FooterForm(); // hooterフォーム
+            FooterForm footerForm = new FooterForm();    // footerフォーム
             footerForm.TopLevel = false;
             footerForm.Dock = DockStyle.Bottom;
             this.Controls.Add(footerForm);
@@ -37,50 +37,32 @@ namespace WinFormsApp2
 
         }
 
-        private int i = 0; // 変数iでループ
-        private List<string> questions = new List<string>(); // 質問を格納するリストを作成
+        private int i = 0; 　　　　　　　　　　　　　　　　　// 変数iを初期化
+        private List<string> questions = new List<string>(); // 質問を格納するリストquestionsを作成
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
             try
             {
                 using var sql = Rdb.Conn.CreateCommand();
-                sql.CommandText = "SELECT Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'A' ORDER BY Q_NO";
+                sql.CommandText = "SELECT Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'A'";  //クエリ作成
+                using var reader = sql.ExecuteReader();　//SQLクエリを実行して、データを読み取る
 
-                using var reader = sql.ExecuteReader();
-                while (reader.Read())
+                while (reader.Read())　　　//while ループ reader.Read() が trueの時ループ実行
                 {
-                    questions.Add(reader["Q_TEXT"].ToString());
+                    questions.Add(reader["Q_TEXT"].ToString()); //Q_TEXT列のすべての行が処理される
+                }
+
+                
+                if (i < questions.Count)           // i が questions.Countの要素数より小さい場合
+                {
+                    label1.Text = questions[i];    // 配列 i = 0 から表示
+                    i++;                           // i++で次の配列へ
                 }
             }
             catch (SqlException ex)
             {
                 Rdb.ErrorMessage(ex);
-            }
-
-            // 最初の質問を表示
-            if (questions.Count > 0)
-            {
-                NextQuestion();
-            }
-
-        }
-
-        private void NextQuestion()　　        // 質問を表示するメソッドを作成
-        {
-            if (i < questions.Count)
-            {
-                label1.Text = questions[i];    //配列iを表示
-                i++; 　　　　　　　　　　　　　// i++で次の質問へ
-            }
-            else
-            {
-                // 全部表示した後の処理
-                MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");　//メッセージ表示
-                InformationForm informationForm = new InformationForm();　//次のフォームに遷移
-                informationForm.Show();
-                this.Hide();
-
             }
         }
 
@@ -88,7 +70,19 @@ namespace WinFormsApp2
         {
             if (radioButton1.Checked)
             {
-                NextQuestion();
+                // 次の質問を表示
+                if (i < questions.Count)
+                {
+                    label1.Text = questions[i];
+                    i++;
+                }
+                else
+                {
+                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
+                    InformationForm informationForm = new InformationForm();
+                    informationForm.Show();
+                    this.Hide();
+                }
             }
         }
 
@@ -96,7 +90,19 @@ namespace WinFormsApp2
         {
             if (radioButton2.Checked)
             {
-                NextQuestion();
+                // 次の質問を表示
+                if (i < questions.Count)
+                {
+                    label1.Text = questions[i];
+                    i++;
+                }
+                else
+                {
+                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
+                    InformationForm informationForm = new InformationForm();
+                    informationForm.Show();
+                    this.Hide();
+                }
             }
         }
 
@@ -104,7 +110,19 @@ namespace WinFormsApp2
         {
             if (radioButton3.Checked)
             {
-                NextQuestion();
+                // 次の質問を表示
+                if (i < questions.Count)
+                {
+                    label1.Text = questions[i];
+                    i++;
+                }
+                else
+                {
+                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
+                    InformationForm informationForm = new InformationForm();
+                    informationForm.Show();
+                    this.Hide();
+                }
             }
         }
 
@@ -112,7 +130,19 @@ namespace WinFormsApp2
         {
             if (radioButton4.Checked)
             {
-                NextQuestion();
+                // 次の質問を表示
+                if (i < questions.Count)
+                {
+                    label1.Text = questions[i];
+                    i++;
+                }
+                else
+                {
+                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
+                    InformationForm informationForm = new InformationForm();
+                    informationForm.Show();
+                    this.Hide();
+                }
             }
         }
 
