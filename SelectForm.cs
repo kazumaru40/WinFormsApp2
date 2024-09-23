@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Formats.Asn1.AsnWriter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace WinFormsApp2
@@ -66,15 +67,17 @@ namespace WinFormsApp2
             }
         }
 
+        private int score = 0;　//点数を加算していく変数
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
-                // 次の質問を表示
                 if (i < questions.Count)
                 {
                     label1.Text = questions[i];
-                    i++;
+                    i++;　　　　　　　　　　　　　　　// 次の質問を表示
+                    score += 1;　　　　　　　　　　　　// 点数を加算
                 }
                 else
                 {
@@ -83,6 +86,7 @@ namespace WinFormsApp2
                     informationForm.Show();
                     this.Hide();
                 }
+                radioButton1.Checked = false;　　　// ラジオボタン選択後、未選択状態に戻す
             }
         }
 
@@ -90,11 +94,11 @@ namespace WinFormsApp2
         {
             if (radioButton2.Checked)
             {
-                // 次の質問を表示
                 if (i < questions.Count)
                 {
                     label1.Text = questions[i];
                     i++;
+                    score += 2;
                 }
                 else
                 {
@@ -103,6 +107,8 @@ namespace WinFormsApp2
                     informationForm.Show();
                     this.Hide();
                 }
+                radioButton2.Checked = false;
+
             }
         }
 
@@ -110,11 +116,11 @@ namespace WinFormsApp2
         {
             if (radioButton3.Checked)
             {
-                // 次の質問を表示
                 if (i < questions.Count)
                 {
                     label1.Text = questions[i];
                     i++;
+                    score += 3;
                 }
                 else
                 {
@@ -123,6 +129,7 @@ namespace WinFormsApp2
                     informationForm.Show();
                     this.Hide();
                 }
+                radioButton3.Checked = false;
             }
         }
 
@@ -130,11 +137,11 @@ namespace WinFormsApp2
         {
             if (radioButton4.Checked)
             {
-                // 次の質問を表示
                 if (i < questions.Count)
                 {
                     label1.Text = questions[i];
                     i++;
+                    score += 4;
                 }
                 else
                 {
@@ -143,6 +150,7 @@ namespace WinFormsApp2
                     informationForm.Show();
                     this.Hide();
                 }
+                radioButton4.Checked = false;
             }
         }
 
