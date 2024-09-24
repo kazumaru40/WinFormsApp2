@@ -37,12 +37,13 @@ namespace WinFormsApp2
 
                 using var reader = sql.ExecuteReader();
                 if (reader.Read())
-
                 {
                     label1.Text = reader["TITLE"].ToString(); // TITLE列の値を取得
 
-                }
+                }               
             }
+
+
             catch (SqlException ex)
             {
                 Rdb.ErrorMessage(ex);
@@ -60,6 +61,11 @@ namespace WinFormsApp2
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void SetTitle(string title)    //タイトルをA～Dを表示していく時に使う
+        {
+            label1.Text = title;
         }
     }
 }

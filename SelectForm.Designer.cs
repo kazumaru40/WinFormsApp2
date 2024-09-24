@@ -51,10 +51,12 @@
             // 
             // radioButton1
             // 
+            radioButton1.Appearance = Appearance.Button;
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(35, 64);
+            radioButton1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            radioButton1.Location = new Point(72, 64);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(63, 24);
+            radioButton1.Size = new Size(52, 30);
             radioButton1.TabIndex = 1;
             radioButton1.Text = "そうだ";
             radioButton1.UseVisualStyleBackColor = true;
@@ -62,10 +64,11 @@
             // 
             // radioButton2
             // 
+            radioButton2.Appearance = Appearance.Button;
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(185, 64);
+            radioButton2.Location = new Point(213, 64);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(86, 24);
+            radioButton2.Size = new Size(75, 30);
             radioButton2.TabIndex = 2;
             radioButton2.Text = "まあそうだ";
             radioButton2.UseVisualStyleBackColor = true;
@@ -73,10 +76,11 @@
             // 
             // radioButton3
             // 
+            radioButton3.Appearance = Appearance.Button;
             radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(361, 64);
+            radioButton3.Location = new Point(376, 64);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(90, 24);
+            radioButton3.Size = new Size(79, 30);
             radioButton3.TabIndex = 3;
             radioButton3.Text = "ややちがう";
             radioButton3.UseVisualStyleBackColor = true;
@@ -84,10 +88,11 @@
             // 
             // radioButton4
             // 
+            radioButton4.Appearance = Appearance.Button;
             radioButton4.AutoSize = true;
             radioButton4.Location = new Point(548, 64);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(64, 24);
+            radioButton4.Size = new Size(53, 30);
             radioButton4.TabIndex = 4;
             radioButton4.Text = "ちがう";
             radioButton4.UseVisualStyleBackColor = true;
