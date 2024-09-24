@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
@@ -66,13 +66,15 @@ namespace WinFormsApp2
                 sql.CommandText = "SELECT * FROM EMPLOYEE WHERE EMP_ID = @EMP_ID";
                 sql.Parameters.AddWithValue("@EMP_ID", txtEmpID.Text);
 
-                using var reader = sql.ExecuteReader();
-                
+                using var reader = sql.ExecuteReader(); //SQLクエリの結果セットを取得し、その結果を順次読み込むための
+                                                        //SqlDataReader オブジェクトを返す。
+                                                        //ExecuteReader() が呼ばれた瞬間に、DataReader が開かれる
+
                 if (reader.Read())　//コネクションを開く
                 {
-                    reader.Close(); // コネクションを閉じる
                     // ログイン成功
                     MessageBox.Show("ログイン成功しました！");
+                    reader.Close();  // DataReaderを閉じる
                     InformationForm informationForm = new InformationForm(); // 遷移先のフォームをインスタンス化
                     informationForm.Show();　　　　　　　　　　　　　　　　　//InfomationFormに遷移する
                     this.Hide();                                             // 現在のLoginFormを非表示にする

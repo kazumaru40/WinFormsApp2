@@ -62,6 +62,8 @@ namespace WinFormsApp2
                     i++;                           // i++で次の配列へ
                 }
 
+
+
             }
             catch (SqlException ex)
             {
@@ -97,18 +99,15 @@ namespace WinFormsApp2
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
                     InformationForm informationForm = new InformationForm();
                     informationForm.Show();
+                    this.Hide();
                     using var sql = Rdb.Conn.CreateCommand();
                     sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
                     using var reader = sql.ExecuteReader();
 
                     if (reader.Read())
                     {
-                        // InformationFormのSetTitleメソッドを使用してタイトルを表示
                         informationForm.SetTitle(reader["TITLE"].ToString());
-                        informationForm.Show();
-                        this.Hide();
-                    }
-                    reader.Close();                                                       
+                    }                 
                 }              
             }
         }
@@ -137,6 +136,7 @@ namespace WinFormsApp2
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
                     InformationForm informationForm = new InformationForm();
                     informationForm.Show();
+                    this.Hide();
                     using var sql = Rdb.Conn.CreateCommand();
                     sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
                     using var reader = sql.ExecuteReader();
@@ -144,10 +144,7 @@ namespace WinFormsApp2
                     if (reader.Read())
                     {                        
                         informationForm.SetTitle(reader["TITLE"].ToString());
-                        informationForm.Show();
-                        this.Hide();
                     }
-                    reader.Close();
                 }          
             }
         }
@@ -176,18 +173,16 @@ namespace WinFormsApp2
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
                     InformationForm informationForm = new InformationForm();
                     informationForm.Show();
+                    this.Hide();
                     using var sql = Rdb.Conn.CreateCommand();
                     sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
                     using var reader = sql.ExecuteReader();
 
                     if (reader.Read())
                     {
-                        // `InformationForm` の `SetTitle` メソッドでラベルにタイトルを設定
                         informationForm.SetTitle(reader["TITLE"].ToString());
-                        informationForm.Show();
-                        this.Hide();
                     }
-                    reader.Close();
+
                 }               
             }
         }
@@ -217,18 +212,15 @@ namespace WinFormsApp2
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
                     InformationForm informationForm = new InformationForm();
                     informationForm.Show();
+                    this.Hide();
                     using var sql = Rdb.Conn.CreateCommand();
                     sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
                     using var reader = sql.ExecuteReader();
 
                     if (reader.Read())
                     {
-                        // `InformationForm` の `SetTitle` メソッドでラベルにタイトルを設定
                         informationForm.SetTitle(reader["TITLE"].ToString());
-                        informationForm.Show();
-                        this.Hide();
                     }
-                    reader.Close();
                 }               
             }
         }
