@@ -75,9 +75,19 @@ namespace WinFormsApp2
             {
                 if (i < questions.Count)
                 {
+                    // 特定の質問（1～7、11～13、15）の場合の処理
+                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    {
+                        score += 4;  // 上記の領域では4点
+                    }
+                    else
+                    {
+                        score += 1;  // 通常の質問では1点
+                    }
+
                     label1.Text = questions[i];
                     i++;　　　　　　　　　　　　　　　// 次の質問を表示
-                    score += 1;　　　　　　　　　　　　// 点数を加算
+                    
                 }
                 else
                 {
@@ -96,9 +106,18 @@ namespace WinFormsApp2
             {
                 if (i < questions.Count)
                 {
+                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    {
+                        score += 3;  // 上の領域では3点
+                    }
+                    else
+                    {
+                        score += 2;  // 通常の質問では2点
+                    }
+
                     label1.Text = questions[i];
                     i++;
-                    score += 2;
+
                 }
                 else
                 {
@@ -118,9 +137,23 @@ namespace WinFormsApp2
             {
                 if (i < questions.Count)
                 {
+                    if (i < questions.Count)
+                    {
+                        if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                        {
+                            score += 2;  // 上記の領域ではで2点
+                        }
+                        else
+                        {
+                            score += 3;  // 通常の質問では3点
+                        }
+
+                        label1.Text = questions[i];
+                        i++;
+                    }
                     label1.Text = questions[i];
                     i++;
-                    score += 3;
+
                 }
                 else
                 {
@@ -139,9 +172,18 @@ namespace WinFormsApp2
             {
                 if (i < questions.Count)
                 {
+                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    {
+                        score += 1;  // 上記の領域では1点
+                    }
+                    else
+                    {
+                        score += 4;  // 通常の質問では4点
+                    }
+
                     label1.Text = questions[i];
                     i++;
-                    score += 4;
+
                 }
                 else
                 {
