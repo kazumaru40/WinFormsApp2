@@ -62,8 +62,6 @@ namespace WinFormsApp2
                     i++;                           // i++で次の配列へ
                 }
 
-
-
             }
             catch (SqlException ex)
             {
@@ -81,7 +79,7 @@ namespace WinFormsApp2
                 if (i < questions.Count)
                 {
                     // 特定の質問（1～7、11～13、15）の場合の処理
-                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    if ((i >= 0 && i <= 7) || (i >= 11 && i <= 13) || i == 15)
                     {
                         scoreA += 4;  // 上記の領域では4点
                     }
@@ -96,18 +94,7 @@ namespace WinFormsApp2
                 }
                 else
                 {
-                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
-                    InformationForm informationForm = new InformationForm();
-                    informationForm.Show();
-                    this.Hide();
-                    using var sql = Rdb.Conn.CreateCommand();
-                    sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
-                    using var reader = sql.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        informationForm.SetTitle(reader["TITLE"].ToString());
-                    }                 
+                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");           
                 }              
             }
         }
@@ -119,7 +106,7 @@ namespace WinFormsApp2
                 radioButton2.Checked = false;
                 if (i < questions.Count)
                 {
-                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    if ((i >= 0 && i <= 7) || (i >= 11 && i <= 13) || i == 15)
                     {
                         scoreA += 3;  // 上の領域では3点
                     }
@@ -134,17 +121,6 @@ namespace WinFormsApp2
                 else
                 {
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
-                    InformationForm informationForm = new InformationForm();
-                    informationForm.Show();
-                    this.Hide();
-                    using var sql = Rdb.Conn.CreateCommand();
-                    sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
-                    using var reader = sql.ExecuteReader();
-
-                    if (reader.Read())
-                    {                        
-                        informationForm.SetTitle(reader["TITLE"].ToString());
-                    }
                 }          
             }
         }
@@ -156,7 +132,7 @@ namespace WinFormsApp2
                 radioButton3.Checked = false;
                 if (i < questions.Count)
                 {
-                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    if ((i >= 0 && i <= 7) || (i >= 11 && i <= 13) || i == 15)
                     {
                         scoreA += 2;  // 上記の領域ではで2点
                     }
@@ -171,18 +147,6 @@ namespace WinFormsApp2
                 else
                 {
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
-                    InformationForm informationForm = new InformationForm();
-                    informationForm.Show();
-                    this.Hide();
-                    using var sql = Rdb.Conn.CreateCommand();
-                    sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
-                    using var reader = sql.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        informationForm.SetTitle(reader["TITLE"].ToString());
-                    }
-
                 }               
             }
         }
@@ -194,7 +158,7 @@ namespace WinFormsApp2
                 radioButton4.Checked = false;
                 if (i < questions.Count)
                 {
-                    if ((i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14)
+                    if ((i >= 0 && i <= 7) || (i >= 11 && i <= 13) || i == 15)
                     {
                         scoreA += 1;  // 上記の領域では1点
                     }
@@ -205,22 +169,10 @@ namespace WinFormsApp2
 
                     label1.Text = questions[i];
                     i++;
-
                 }
                 else
                 {
                     MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
-                    InformationForm informationForm = new InformationForm();
-                    informationForm.Show();
-                    this.Hide();
-                    using var sql = Rdb.Conn.CreateCommand();
-                    sql.CommandText = "SELECT '最近1月間のあなたの状態についてうかがいます。' AS TITLE FROM question_title WHERE Q_CATEGORY = 'B'";
-                    using var reader = sql.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        informationForm.SetTitle(reader["TITLE"].ToString());
-                    }
                 }               
             }
         }
