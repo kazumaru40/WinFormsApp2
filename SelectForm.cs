@@ -84,7 +84,7 @@ namespace WinFormsApp2
 
 
                 // 特定の質問（1～7、11～13、15）の場合の処理
-                bool specialQuestion = (i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14;
+                bool specialQuestion = (i >= 0 && i <= 7) || (i >= 11 && i <= 13) || i == 15;
 
                 // ラジオボタンごとのスコア加算処理
                 switch (selectedRadioButton.Name)
@@ -131,7 +131,7 @@ namespace WinFormsApp2
 
 
                 // 特定の質問（1～3）の場合の処理
-                bool specialQuestion = (j == 0 || j == 1 || j == 2);
+                bool specialQuestion = (j == 1 || j == 2 || j == 3);
 
                 // ラジオボタンごとのスコア加算処理
                 switch (selectedRadioButton.Name)
