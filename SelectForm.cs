@@ -198,6 +198,21 @@ namespace WinFormsApp2
                         break;
                 }
 
+                // 質問ごとにlabel2にメッセージを表示
+                if (k >= 0 && k <= 2)
+                {
+                    label2.Text = "次の人たちはどのくらい気軽に話ができますか？";
+                }
+                else if (k >= 3 && k <= 5)
+                {
+                    label2.Text = "あなたが困った時、次の人たちはどのくらい頼りになりますか？";
+                }
+                else if (k >= 6 && k <= 8)
+                {
+                    label2.Text = "あなたの個人的な問題を相談したら、次の人たちはどのくらいきいてくれますか？";
+                }
+
+
                 // 次の質問を表示
                 if (k < questionsC.Count)
                 {
@@ -283,9 +298,7 @@ namespace WinFormsApp2
                     questionsC.Add(reader["Q_TEXT"].ToString());
                 }
 
-                // label2にCの説明を表示
-                label2.Text = "あなたの周りの方々についてうかがいます。最もあてはまるものを選んでください。";
-
+                label2.Text = "次の人たちはどのくらい気軽に話ができますか？";
 
 
                 // 最初の質問Cを表示
