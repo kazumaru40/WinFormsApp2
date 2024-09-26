@@ -31,8 +31,10 @@ namespace WinFormsApp2
 
         private int i = 0; 　　　　　　　　　　　　　　　　　// 変数iを初期化
         private int j = 0;
+        private int k = 0;
         private List<string> questionsA = new List<string>(); // 質問を格納するリストquestionsを作成
         private List<string> questionsB = new List<string>();
+        private List<string> questionsC = new List<string>();
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
@@ -111,7 +113,7 @@ namespace WinFormsApp2
                 }
                 else // 質問Aが終了した場合
                 {
-                    MessageBox.Show("１７問が終了しました。次のステップに移ります。");
+                    MessageBox.Show("Ｂ 最近 1 か月間のあなたの状態についてうかがいます。最もあてはまるものを選んでください。");
                     LoadAndShowCategoryBQuestions(); // 質問Bをロードして表示
                 }
             }
@@ -159,12 +161,55 @@ namespace WinFormsApp2
 
                 else // 質問Bが終了した場合
                 {
-                    MessageBox.Show("２９問が終了しました。次のステップに移ります。");
-                    //質問Cに続く
+                    MessageBox.Show("Ｃ あなたの周りの方々についてうかがいます。最もあてはまるものを選んでください");
+                    LoadAndShowCategoryCQuestions(); // 質問Cをロードして表示
                 }
             }
         }
-    
+
+
+        private int scoreC = 0;　//点数を加算していく変数
+        private void radioButton_CheckedChangedC(object sender, EventArgs e)
+        {
+            RadioButton selectedRadioButton = sender as RadioButton;
+
+            if (selectedRadioButton != null && selectedRadioButton.Checked)
+            {
+                // 選択されたラジオボタンを未選択状態に戻す
+                selectedRadioButton.Checked = false;
+
+
+                // ラジオボタンごとのスコア加算処理
+                switch (selectedRadioButton.Name)
+                {
+                    case "radioButton1":
+                        scoreC += 1;  // radioButton1は1点
+                        break;
+                    case "radioButton2":
+                        scoreC += 2;  // radioButton2は2点
+                        break;
+                    case "radioButton3":
+                        scoreC += 3;  // radioButton3は3点
+                        break;
+                    case "radioButton4":
+                        scoreC += 4;  // radioButton4は4点
+                        break;
+                }
+
+                // 次の質問を表示
+                if (k < questionsC.Count) 
+                {
+                    label1.Text = questionsC[k]; 
+                    k++; 
+                }
+
+                else // 質問Cが終了した場合
+                {
+                    MessageBox.Show("９問が終了しました。次のステップに移ります。");
+                }
+            }
+        }
+
 
 
 
@@ -198,6 +243,46 @@ namespace WinFormsApp2
                 {
                     label1.Text = questionsB[j];
                     j++;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                Rdb.ErrorMessage(ex);
+            }
+        }
+
+
+        // 質問Cをロードし、最初の質問を表示するメソッド
+        private void LoadAndShowCategoryCQuestions()
+        {
+            try
+            {
+                radioButton1.CheckedChanged -= radioButton_CheckedChangedB; //Bのハンドラーを削除
+                radioButton2.CheckedChanged -= radioButton_CheckedChangedB;
+                radioButton3.CheckedChanged -= radioButton_CheckedChangedB;
+                radioButton4.CheckedChanged -= radioButton_CheckedChangedB;
+
+                radioButton1.CheckedChanged += radioButton_CheckedChangedC; // Cのハンドラーを追加
+                radioButton2.CheckedChanged += radioButton_CheckedChangedC;
+                radioButton3.CheckedChanged += radioButton_CheckedChangedC;
+                radioButton4.CheckedChanged += radioButton_CheckedChangedC;
+
+                // 質問Cを取得
+                using var sql = Rdb.Conn.CreateCommand();
+                sql.CommandText = "SELECT Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'C'";
+                using var reader = sql.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    questionsC.Add(reader["Q_TEXT"].ToString());
+                }
+
+                // 最初の質問Cを表示
+                if (k < questionsC.Count)
+                {
+                    label1.Text = questionsC[k];
+                    k++;
                 }
 
             }
