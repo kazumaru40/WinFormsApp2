@@ -30,28 +30,12 @@ namespace WinFormsApp2
 
         private void InformationForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                using var sql = Rdb.Conn.CreateCommand();
-                sql.CommandText = "SELECT 'あなたの仕事についてうかがいます' AS TITLE FROM question_title";
 
-                using var reader = sql.ExecuteReader();
-                if (reader.Read())
-                {
-                    label1.Text = reader["TITLE"].ToString(); // TITLE列の値を取得
-
-                }               
-            }
-
-
-            catch (SqlException ex)
-            {
-                Rdb.ErrorMessage(ex);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(" あなたの仕事についてうかがいます。最もあてはまるものを選んでください。");
             SelectForm selectFrom = new SelectForm();
             selectFrom.Show();
             this.Hide();

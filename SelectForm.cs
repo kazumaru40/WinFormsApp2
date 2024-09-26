@@ -44,8 +44,9 @@ namespace WinFormsApp2
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
+            
             try
-            {
+            {              
                 using var sql = Rdb.Conn.CreateCommand();
                 sql.CommandText = "SELECT Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'A'";  //クエリ作成
                 using var reader = sql.ExecuteReader();　//SQLクエリを実行して、データを読み取る

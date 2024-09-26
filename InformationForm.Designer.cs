@@ -56,12 +56,13 @@
             // 
             // label1
             // 
+            label1.BackColor = SystemColors.GradientActiveCaption;
             label1.Font = new Font("Yu Gothic UI", 14F);
-            label1.Location = new Point(387, 171);
+            label1.Location = new Point(387, 173);
             label1.Name = "label1";
             label1.Size = new Size(400, 150);
             label1.TabIndex = 3;
-            label1.Text = "label1";
+            label1.Text = "これから４つのステップの質問に答えてもらいます。";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += label1_Click;
             // 
@@ -69,6 +70,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(1182, 853);
             Controls.Add(label1);
             Controls.Add(button1);
