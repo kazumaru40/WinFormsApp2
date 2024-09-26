@@ -34,6 +34,7 @@
             radioButton3 = new RadioButton();
             radioButton4 = new RadioButton();
             groupBox1 = new GroupBox();
+            label2 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,9 +42,9 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Yu Gothic UI", 12F);
-            label1.Location = new Point(335, 156);
+            label1.Location = new Point(335, 223);
             label1.Name = "label1";
-            label1.Size = new Size(500, 300);
+            label1.Size = new Size(500, 233);
             label1.TabIndex = 0;
             label1.Text = "label1";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -112,11 +113,23 @@
             groupBox1.Text = "当てはまるものを選んでください";
             groupBox1.Enter += groupBox1_Enter;
             // 
+            // label2
+            // 
+            label2.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            label2.Location = new Point(335, 130);
+            label2.Name = "label2";
+            label2.Size = new Size(498, 68);
+            label2.TabIndex = 6;
+            label2.Text = "label2";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.Click += label2_Click;
+            // 
             // SelectForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 853);
+            Controls.Add(label2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "SelectForm";
@@ -135,5 +148,6 @@
         private RadioButton radioButton3;
         private RadioButton radioButton4;
         private GroupBox groupBox1;
+        private Label label2;
     }
 }

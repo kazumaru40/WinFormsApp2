@@ -41,6 +41,8 @@ namespace WinFormsApp2
 
             try
             {
+                label2.Text = "あなたの仕事についてうかがいます。最もあてはまるものを選んでください。";
+
                 radioButton1.CheckedChanged += radioButton_CheckedChangedA;
                 radioButton2.CheckedChanged += radioButton_CheckedChangedA;
                 radioButton3.CheckedChanged += radioButton_CheckedChangedA;
@@ -113,7 +115,7 @@ namespace WinFormsApp2
                 }
                 else // 質問Aが終了した場合
                 {
-                    MessageBox.Show("Ｂ 最近 1 か月間のあなたの状態についてうかがいます。最もあてはまるものを選んでください。");
+                    MessageBox.Show("最近 1 か月間のあなたの状態についてうかがいます。最もあてはまるものを選んでください。");
                     LoadAndShowCategoryBQuestions(); // 質問Bをロードして表示
                 }
             }
@@ -161,7 +163,7 @@ namespace WinFormsApp2
 
                 else // 質問Bが終了した場合
                 {
-                    MessageBox.Show("Ｃ あなたの周りの方々についてうかがいます。最もあてはまるものを選んでください");
+                    MessageBox.Show("あなたの周りの方々についてうかがいます。最もあてはまるものを選んでください");
                     LoadAndShowCategoryCQuestions(); // 質問Cをロードして表示
                 }
             }
@@ -197,15 +199,15 @@ namespace WinFormsApp2
                 }
 
                 // 次の質問を表示
-                if (k < questionsC.Count) 
+                if (k < questionsC.Count)
                 {
-                    label1.Text = questionsC[k]; 
-                    k++; 
+                    label1.Text = questionsC[k];
+                    k++;
                 }
 
                 else // 質問Cが終了した場合
                 {
-                    MessageBox.Show("９問が終了しました。次のステップに移ります。");
+                    MessageBox.Show(" 満足度について ");
                 }
             }
         }
@@ -237,6 +239,9 @@ namespace WinFormsApp2
                 {
                     questionsB.Add(reader["Q_TEXT"].ToString());
                 }
+
+                // label2にBの説明を表示
+                label2.Text = "最近 1 か月間のあなたの状態についてうかがいます。最もあてはまるものを選んでください。";
 
                 // 最初の質問Bを表示
                 if (j < questionsB.Count)
@@ -278,6 +283,11 @@ namespace WinFormsApp2
                     questionsC.Add(reader["Q_TEXT"].ToString());
                 }
 
+                // label2にCの説明を表示
+                label2.Text = "あなたの周りの方々についてうかがいます。最もあてはまるものを選んでください。";
+
+
+
                 // 最初の質問Cを表示
                 if (k < questionsC.Count)
                 {
@@ -314,6 +324,11 @@ namespace WinFormsApp2
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
