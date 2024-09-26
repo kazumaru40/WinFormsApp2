@@ -29,7 +29,7 @@ namespace WinFormsApp2
 
         }
 
-        private int i = 0; 　　　　　　　　　　　　　　　　　// 変数iを初期化
+        private int i = 0; 　　　　　　　　　　　　　　　　　// 変数を初期化
         private int j = 0;
         private int k = 0;
         private int l = 0;
@@ -200,7 +200,7 @@ namespace WinFormsApp2
                         break;
                 }
 
-                // 質問ごとにlabel2にメッセージを表示
+                // 質問の領域ごとにサブタイトルを表示
                 if (k >= 0 && k <= 2)
                 {
                     label2.Text = "次の人たちはどのくらい気軽に話ができますか？";
@@ -269,8 +269,38 @@ namespace WinFormsApp2
 
                 else // 質問Dが終了した場合
                 {
-                    MessageBox.Show(" 結果を表示します");
-                    
+                    // スコア判定
+                    bool isHighStress = false;
+
+                    // ㋐ scoreBの合計点数が77点以上
+                    if (scoreB >= 77)
+                    {
+                        isHighStress = true;
+                    }
+
+                    // ㋑ scoreAとscoreCの合算が76点以上かつscoreBが63点以上
+                    if ((scoreA + scoreC >= 76) && scoreB >= 63)
+                    {
+                        isHighStress = true;
+                    }
+
+                    // 判定結果を表示してフォームを遷移
+                    if (isHighStress)
+                    {
+                        MessageBox.Show("高ストレス者です。");
+                        // 次のフォームに遷移する処理
+                        ResultForm resultForm = new ResultForm();
+                        resultForm.Show();
+                        this.Hide();  // 現在のフォームを隠す
+                    }
+                    else
+                    {
+                        MessageBox.Show("高ストレス者ではありません。");
+                        // ストレスが高くない場合のフォームに遷移する処理
+                        ResultForm resultForm = new ResultForm();
+                        resultForm.Show();
+                        this.Hide();  // 現在のフォームを隠す
+                    }
                 }
             }
         }

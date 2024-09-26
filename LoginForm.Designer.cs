@@ -144,6 +144,7 @@
             Controls.Add(txtEmpID);
             Controls.Add(pictureBox1);
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

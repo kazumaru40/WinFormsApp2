@@ -133,6 +133,7 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "SelectForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SelectForm";
             Load += SelectForm_Load;
             groupBox1.ResumeLayout(false);
