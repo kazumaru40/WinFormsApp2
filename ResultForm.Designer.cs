@@ -35,21 +35,23 @@
             // label1
             // 
             label1.BackColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(387, 255);
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            label1.Location = new Point(390, 310);
             label1.Name = "label1";
-            label1.Size = new Size(327, 69);
+            label1.Size = new Size(327, 105);
             label1.TabIndex = 0;
             label1.Text = "label1";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
-            button1.Location = new Point(451, 443);
+            button1.Location = new Point(455, 513);
             button1.Name = "button1";
             button1.Size = new Size(200, 50);
             button1.TabIndex = 1;
-            button1.Text = "button1";
+            button1.Text = "ストレス対策サイト";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // ResultForm
             // 

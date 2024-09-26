@@ -12,6 +12,8 @@ namespace WinFormsApp2
 {
     public partial class ResultForm : Form
     {
+        public string ResultMessage { get; set; }  // SlectFormからのメッセージを受け取る
+
         public ResultForm()
         {
             InitializeComponent();
@@ -33,7 +35,16 @@ namespace WinFormsApp2
 
         private void ResultForm_Load(object sender, EventArgs e)
         {
+            label1.Text = ResultMessage;  // label1にメッセージを表示
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://www.mhlw.go.jp/mamorouyokokoro/",
+                UseShellExecute = true
+            });
         }
     }
 }

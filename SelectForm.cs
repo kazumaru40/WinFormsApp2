@@ -287,17 +287,17 @@ namespace WinFormsApp2
                     // 判定結果を表示してフォームを遷移
                     if (isHighStress)
                     {
-                        MessageBox.Show("高ストレス者です。");
-                        // 次のフォームに遷移する処理
+                        MessageBox.Show("高ストレス者です。");                      
                         ResultForm resultForm = new ResultForm();
+                        resultForm.ResultMessage = "あなたは高ストレス者です。";  // メッセージをセット
                         resultForm.Show();
                         this.Hide();  // 現在のフォームを隠す
                     }
                     else
                     {
                         MessageBox.Show("高ストレス者ではありません。");
-                        // ストレスが高くない場合のフォームに遷移する処理
                         ResultForm resultForm = new ResultForm();
+                        resultForm.ResultMessage = "あなたは高ストレス者ではありません。";  // メッセージをセット
                         resultForm.Show();
                         this.Hide();  // 現在のフォームを隠す
                     }
