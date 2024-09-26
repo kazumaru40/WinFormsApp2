@@ -30,11 +30,13 @@ namespace WinFormsApp2
         }
 
         private int i = 0; 　　　　　　　　　　　　　　　　　// 変数iを初期化
-        private List<string> questions = new List<string>(); // 質問を格納するリストquestionsを作成
+        private int j = 0;
+        private List<string> questionsA = new List<string>(); // 質問を格納するリストquestionsを作成
+        private List<string> questionsB = new List<string>();
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
-            
+
             try
             {
                 radioButton1.CheckedChanged += radioButton_CheckedChangedA;
@@ -48,13 +50,13 @@ namespace WinFormsApp2
 
                 while (reader.Read())　　　//while ループ reader.Read() が trueの時ループ実行
                 {
-                    questions.Add(reader["Q_TEXT"].ToString()); //Q_TEXT列のすべての行が処理される
+                    questionsA.Add(reader["Q_TEXT"].ToString()); //Q_TEXT列のすべての行が処理される
                 }
 
-                
-                if (i < questions.Count)           // i が questions.Countの要素数より小さい場合
+
+                if (i < questionsA.Count)           // i が questions.Countの要素数より小さい場合
                 {
-                    label1.Text = questions[i];    // 配列 i = 0 から表示
+                    label1.Text = questionsA[i];    // 配列 i = 0 から表示
                     i++;                           // i++で次の配列へ
                 }
 
@@ -63,10 +65,14 @@ namespace WinFormsApp2
             {
                 Rdb.ErrorMessage(ex);
             }
+
         }
 
 
-        private int scoreA = 0;　//点数を加算していく変数
+
+
+        private int scoreA = 0; //点数を加算していく変数
+        private bool isCategoryAComplete = false;  // 質問Aが終了したかを示すフラグ
         private void radioButton_CheckedChangedA(object sender, EventArgs e)
         {
             RadioButton selectedRadioButton = sender as RadioButton;
@@ -76,38 +82,131 @@ namespace WinFormsApp2
                 // 選択されたラジオボタンを未選択状態に戻す
                 selectedRadioButton.Checked = false;
 
-                if (i < questions.Count)
+
+                // 特定の質問（1～7、11～13、15）の場合の処理
+                bool specialQuestion = (i >= 0 && i <= 6) || (i >= 10 && i <= 12) || i == 14;
+
+                // ラジオボタンごとのスコア加算処理
+                switch (selectedRadioButton.Name)
                 {
-                    // 特定の質問（1～7、11～13、15）の場合の処理
-                    bool specialQuestion = (i >= 0 && i <= 7) || (i >= 11 && i <= 13) || i == 15;
-
-                    // ラジオボタンごとのスコア加算処理
-                    switch (selectedRadioButton.Name)
-                    {
-                        case "radioButton1":
-                            scoreA += specialQuestion ? 4 : 1;
-                            break;
-                        case "radioButton2":
-                            scoreA += specialQuestion ? 3 : 2;
-                            break;
-                        case "radioButton3":
-                            scoreA += specialQuestion ? 2 : 3;
-                            break;
-                        case "radioButton4":
-                            scoreA += specialQuestion ? 1 : 4;
-                            break;
-                    }
-
-                    // 次の質問を表示
-                    label1.Text = questions[i];
-                    i++;
+                    case "radioButton1":
+                        scoreA += specialQuestion ? 4 : 1;
+                        break;
+                    case "radioButton2":
+                        scoreA += specialQuestion ? 3 : 2;
+                        break;
+                    case "radioButton3":
+                        scoreA += specialQuestion ? 2 : 3;
+                        break;
+                    case "radioButton4":
+                        scoreA += specialQuestion ? 1 : 4;
+                        break;
                 }
-                else
+
+                // 次の質問を表示
+                if (i < questionsA.Count) // 質問がまだ残っている場合
                 {
-                    MessageBox.Show("全ての質問が終了しました。次のステップに移ります。");
+                    label1.Text = questionsA[i]; // 現在の質問を表示
+                    i++; // 質問インデックスを進める
+                }
+                else // 質問Aが終了した場合
+                {
+                    MessageBox.Show("１７問が終了しました。次のステップに移ります。");
+                    LoadAndShowCategoryBQuestions(); // 質問Bをロードして表示
+                }
+            }
+
+        }
+
+
+        private int scoreB = 0;　//点数を加算していく変数
+        private void radioButton_CheckedChangedB(object sender, EventArgs e)
+        {
+            RadioButton selectedRadioButton = sender as RadioButton;
+
+            if (selectedRadioButton != null && selectedRadioButton.Checked)
+            {
+                // 選択されたラジオボタンを未選択状態に戻す
+                selectedRadioButton.Checked = false;
+
+
+                // 特定の質問（1～3）の場合の処理
+                bool specialQuestion = (j == 0 || j == 1 || j == 2);
+
+                // ラジオボタンごとのスコア加算処理
+                switch (selectedRadioButton.Name)
+                {
+                    case "radioButton1":
+                        scoreB += specialQuestion ? 4 : 1;
+                        break;
+                    case "radioButton2":
+                        scoreB += specialQuestion ? 3 : 2;
+                        break;
+                    case "radioButton3":
+                        scoreB += specialQuestion ? 2 : 3;
+                        break;
+                    case "radioButton4":
+                        scoreB += specialQuestion ? 1 : 4;
+                        break;
+                }
+
+                // 次の質問を表示
+                if (j < questionsB.Count) // 質問がまだ残っている場合
+                {
+                    label1.Text = questionsB[j]; // 現在の質問を表示
+                    j++; // 質問インデックスを進める
+                }
+
+                else // 質問Bが終了した場合
+                {
+                    MessageBox.Show("２９問が終了しました。次のステップに移ります。");
+                    //質問Cに続く
                 }
             }
         }
+    
+
+
+
+        // 質問Bをロードし、最初の質問を表示するメソッド
+        private void LoadAndShowCategoryBQuestions()
+        {
+            try
+            {
+                radioButton1.CheckedChanged -= radioButton_CheckedChangedA; //Aのハンドラーを削除
+                radioButton2.CheckedChanged -= radioButton_CheckedChangedA;
+                radioButton3.CheckedChanged -= radioButton_CheckedChangedA;
+                radioButton4.CheckedChanged -= radioButton_CheckedChangedA;
+
+                radioButton1.CheckedChanged += radioButton_CheckedChangedB; // Bのハンドラーを追加
+                radioButton2.CheckedChanged += radioButton_CheckedChangedB;
+                radioButton3.CheckedChanged += radioButton_CheckedChangedB;
+                radioButton4.CheckedChanged += radioButton_CheckedChangedB;
+
+                // 質問Bを取得
+                using var sql = Rdb.Conn.CreateCommand();
+                sql.CommandText = "SELECT Q_TEXT FROM QUESTION WHERE Q_CATEGORY = 'B'";
+                using var reader = sql.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    questionsB.Add(reader["Q_TEXT"].ToString());
+                }
+
+                // 最初の質問Bを表示
+                if (j < questionsB.Count)
+                {
+                    label1.Text = questionsB[j];
+                    j++;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                Rdb.ErrorMessage(ex);
+            }
+        }
+
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
