@@ -36,16 +36,16 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label1.Location = new Point(390, 310);
+            label1.Location = new Point(400, 309);
             label1.Name = "label1";
-            label1.Size = new Size(327, 105);
+            label1.Size = new Size(327, 128);
             label1.TabIndex = 0;
             label1.Text = "label1";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
-            button1.Location = new Point(455, 513);
+            button1.Location = new Point(463, 513);
             button1.Name = "button1";
             button1.Size = new Size(200, 50);
             button1.TabIndex = 1;

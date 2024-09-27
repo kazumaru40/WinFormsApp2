@@ -42,7 +42,7 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Yu Gothic UI", 12F);
-            label1.Location = new Point(335, 223);
+            label1.Location = new Point(345, 256);
             label1.Name = "label1";
             label1.Size = new Size(500, 233);
             label1.TabIndex = 0;
@@ -105,7 +105,7 @@
             groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton3);
-            groupBox1.Location = new Point(208, 539);
+            groupBox1.Location = new Point(215, 539);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(740, 140);
             groupBox1.TabIndex = 5;
@@ -116,7 +116,7 @@
             // label2
             // 
             label2.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label2.Location = new Point(335, 130);
+            label2.Location = new Point(345, 163);
             label2.Name = "label2";
             label2.Size = new Size(498, 68);
             label2.TabIndex = 6;
@@ -128,6 +128,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(1182, 853);
             Controls.Add(label2);
             Controls.Add(groupBox1);
