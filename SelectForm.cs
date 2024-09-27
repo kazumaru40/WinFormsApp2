@@ -294,13 +294,20 @@ namespace WinFormsApp2
                     }
 
                     // ㋑ scoreAとscoreCの合算が76点以上かつscoreBが63点以上
-                    if ((scoreA + scoreC >= 76) && scoreB >= 63)
+                    if ((scoreA + scoreC >= 76) && (scoreB >= 63))
                     {
                         isHighStress = true;
                     }
 
-                    // 判定結果を表示してフォームを遷移
-                    if (isHighStress)
+                    // ㋐と㋑ 共に当てはまる
+                    if ((scoreB >= 77) && ((scoreA + scoreC >= 76) && (scoreB >= 63)))
+                    {
+                        isHighStress = true;
+                    }
+
+
+                        // 判定結果を表示してフォームを遷移
+                        if (isHighStress)　//trueの時
                     {
                         MessageBox.Show("高ストレス者です。");                      
                         ResultForm resultForm = new ResultForm();
@@ -308,7 +315,7 @@ namespace WinFormsApp2
                         resultForm.Show();
                         this.Hide();  // 現在のフォームを隠す
                     }
-                    else
+                    else　　　　　　　//falseの時
                     {
                         MessageBox.Show("高ストレス者ではありません。");
                         ResultForm resultForm = new ResultForm();
