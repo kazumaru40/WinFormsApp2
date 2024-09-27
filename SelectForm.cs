@@ -167,6 +167,14 @@ namespace WinFormsApp2
                 {
                     MessageBox.Show("あなたの周りの方々についてうかがいます。最もあてはまるものを選んでください");
                     LoadAndShowCategoryCQuestions(); // 質問Cをロードして表示
+
+                    if (0 < 8)  // 1問目と2問目でラジオボタンのテキストを変更
+                    {
+                        radioButton1.Text = "非常に";
+                        radioButton2.Text = "かなり";
+                        radioButton3.Text = "多少";
+                        radioButton4.Text = "全くない";
+                    }
                 }
             }
         }
@@ -226,6 +234,14 @@ namespace WinFormsApp2
                 {
                     MessageBox.Show(" 満足度について ");
                     LoadAndShowCategoryDQuestions(); // 質問Dをロードして表示
+                                                     
+                    if (0 < 2) // 1問目と2問目でラジオボタンのテキストを変更
+                        {
+                        radioButton1.Text = "満足";
+                        radioButton2.Text = "まあ満足";
+                        radioButton3.Text = "やや満足";
+                        radioButton4.Text = "不満足";
+                    }
                 }
             }
         }
@@ -258,7 +274,6 @@ namespace WinFormsApp2
                         scoreD += 4;  // radioButton4は4点
                         break;
                 }
-
 
                 // 次の質問を表示
                 if (l < questionsD.Count)
