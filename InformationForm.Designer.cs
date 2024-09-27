@@ -58,11 +58,11 @@
             // 
             label1.BackColor = SystemColors.GradientActiveCaption;
             label1.Font = new Font("Yu Gothic UI", 14F);
-            label1.Location = new Point(387, 173);
+            label1.Location = new Point(312, 173);
             label1.Name = "label1";
-            label1.Size = new Size(400, 150);
+            label1.Size = new Size(515, 150);
             label1.TabIndex = 3;
-            label1.Text = "これから４つのステップの質問に答えてもらいます。";
+            label1.Text = "次にページに書いてある質問について、最もあてはまるものを選んでください。その結果によって高ストレス者であるかを判定します。\r\n";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += label1_Click;
             // 

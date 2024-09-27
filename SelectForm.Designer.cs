@@ -55,7 +55,7 @@
             radioButton1.Appearance = Appearance.Button;
             radioButton1.AutoSize = true;
             radioButton1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            radioButton1.Location = new Point(72, 64);
+            radioButton1.Location = new Point(60, 64);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(52, 30);
             radioButton1.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             radioButton2.Appearance = Appearance.Button;
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(213, 64);
+            radioButton2.Location = new Point(222, 64);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(75, 30);
             radioButton2.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             radioButton3.Appearance = Appearance.Button;
             radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(376, 64);
+            radioButton3.Location = new Point(415, 64);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(79, 30);
             radioButton3.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             radioButton4.Appearance = Appearance.Button;
             radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(548, 64);
+            radioButton4.Location = new Point(584, 64);
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(53, 30);
             radioButton4.TabIndex = 4;
@@ -105,9 +105,9 @@
             groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton3);
-            groupBox1.Location = new Point(232, 539);
+            groupBox1.Location = new Point(208, 539);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(697, 140);
+            groupBox1.Size = new Size(740, 140);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "当てはまるものを選んでください";

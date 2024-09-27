@@ -13,7 +13,7 @@ namespace WinFormsApp2
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new SelectForm()); //現在のメインフォーム
+            Application.Run(new LoginForm()); //現在のメインフォーム
 
             Rdb.Disconnect();
         }

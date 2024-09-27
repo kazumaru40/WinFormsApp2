@@ -35,7 +35,7 @@ namespace WinFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(" Ａ あなたの仕事についてうかがいます。最もあてはまるものを選んでください。");
+            MessageBox.Show(" あなたの仕事についてうかがいます。最もあてはまるものを選んでください。");
             SelectForm selectFrom = new SelectForm();
             selectFrom.Show();
             this.Hide();

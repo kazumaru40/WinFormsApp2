@@ -119,6 +119,14 @@ namespace WinFormsApp2
                 {
                     MessageBox.Show("最近 1 か月間のあなたの状態についてうかがいます。最もあてはまるものを選んでください。");
                     LoadAndShowCategoryBQuestions(); // 質問Bをロードして表示
+
+                    if (0 < 30)  // 1問目と2問目でラジオボタンのテキストを変更
+                    {
+                        radioButton1.Text = "ほとんどなかった";
+                        radioButton2.Text = "ときどきあった";
+                        radioButton3.Text = "しばしばあった";
+                        radioButton4.Text = "ほとんどいつでもあった";
+                    }
                 }
             }
 
