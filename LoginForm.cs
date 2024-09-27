@@ -53,7 +53,7 @@ namespace WinFormsApp2
 
         private void button1_Click(object sender, EventArgs e) //ログインボタン
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))　
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 MessageBox.Show("IDとパスワードを入力してください。");
                 return;
@@ -89,6 +89,21 @@ namespace WinFormsApp2
             {
                 Rdb.ErrorMessage(ex);
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

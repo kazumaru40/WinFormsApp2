@@ -50,6 +50,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // txtEmpID
             // 
@@ -99,6 +100,7 @@
             label3.Size = new Size(426, 42);
             label3.TabIndex = 10;
             label3.Text = "10分で出来る職場のセルフストレスチェック";
+            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -109,6 +111,7 @@
             label4.TabIndex = 11;
             label4.Text = "３つのステップで簡単な質問に答えてもらい、ストレス度をチェックします。\r\n     全５７問で約１０分ほどで終了します。\r\n";
             label4.TextAlign = ContentAlignment.MiddleCenter;
+            label4.Click += label4_Click;
             // 
             // label5
             // 

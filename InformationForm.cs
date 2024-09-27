@@ -51,5 +51,10 @@ namespace WinFormsApp2
         {
             label1.Text = title;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

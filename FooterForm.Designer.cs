@@ -39,7 +39,7 @@
             footerpanel.Controls.Add(button1);
             footerpanel.Location = new Point(73, 49);
             footerpanel.Name = "footerpanel";
-            footerpanel.Size = new Size(1000, 70);
+            footerpanel.Size = new Size(1000, 78);
             footerpanel.TabIndex = 0;
             footerpanel.Paint += footerpanel_Paint;
             // 
