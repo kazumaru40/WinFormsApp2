@@ -105,11 +105,11 @@
             // label4
             // 
             label4.Font = new Font("Yu Gothic UI", 10F);
-            label4.Location = new Point(311, 409);
+            label4.Location = new Point(322, 409);
             label4.Name = "label4";
-            label4.Size = new Size(500, 100);
+            label4.Size = new Size(491, 100);
             label4.TabIndex = 11;
-            label4.Text = "３つのステップで簡単な質問に答えてもらい、ストレス度をチェックします。\r\n     全５７問で約１０分ほどで終了します。\r\n";
+            label4.Text = "３つのステップで簡単な質問に答えてもらい、ストレス度をチェックします。全５７問で約１０分ほどで終了します。";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             label4.Click += label4_Click;
             // 
