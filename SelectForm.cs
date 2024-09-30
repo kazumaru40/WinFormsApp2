@@ -33,8 +33,8 @@ namespace WinFormsApp2
         private int j = 0;
         private int k = 0;
         private int l = 0;
-        private List<string> questionsA = new List<string>(); // 質問を格納するリストquestionsを作成
-        private List<string> questionsB = new List<string>();
+        private List<string> questionsA = new List<string>(); // DBの質問を格納するリストquestionsを作成
+        private List<string> questionsB = new List<string>(); //
         private List<string> questionsC = new List<string>();
         private List<string> questionsD = new List<string>();
 
@@ -62,8 +62,8 @@ namespace WinFormsApp2
 
                 if (i < questionsA.Count)           // i が questions.Countの要素数より小さい場合
                 {
-                    label1.Text = questionsA[i];    // 配列 i = 0 から表示
-                    i++;                           // i++で次の配列へ
+                    label1.Text = questionsA[i];    // label1に questionsAのi番目 の質問が表示
+                    i++;                           // i++で次の質問を順番に表示
                 }
 
             }
@@ -79,10 +79,16 @@ namespace WinFormsApp2
 
         private int scoreA = 0; //点数を加算していく変数
         private bool isCategoryAComplete = false;  // 質問Aが終了したかを示すフラグ
+
+        //Aの領域の質問を回答する時のラジオボタン１～４の計算方法
         private void radioButton_CheckedChangedA(object sender, EventArgs e)
         {
+            //ラジオボタンのインスタンス化
+            //sender as RadioButton (RadioButton 型にキャスト)
             RadioButton selectedRadioButton = sender as RadioButton;
 
+
+            //ラジオボタンがnullではなくて、選択されているかどうかを確認
             if (selectedRadioButton != null && selectedRadioButton.Checked)
             {
                 // 選択されたラジオボタンを未選択状態に戻す
@@ -95,6 +101,9 @@ namespace WinFormsApp2
                 // ラジオボタンごとのスコア加算処理
                 switch (selectedRadioButton.Name)
                 {
+                    //specialQuestion　真偽値(bool型)をもった変数
+                    //? でspecialQuestionがtrueかどうかを評価し、trueの場合は 4 を、false の場合は 1 。
+                    //+= scoreA に指定された値を加算し、結果を scoreA に再代入。
                     case "radioButton1":
                         scoreA += specialQuestion ? 4 : 1;
                         break;
@@ -112,7 +121,7 @@ namespace WinFormsApp2
                 // 次の質問を表示
                 if (i < questionsA.Count) // 質問がまだ残っている場合
                 {
-                    label1.Text = questionsA[i]; // 現在の質問を表示
+                    label1.Text = questionsA[i]; // label1に質問を表示
                     i++; // 質問インデックスを進める
                 }
                 else // 質問Aが終了した場合
@@ -134,6 +143,8 @@ namespace WinFormsApp2
 
 
         private int scoreB = 0;　//点数を加算していく変数
+
+        //Bの領域の質問を回答する時のラジオボタン１～４の計算方法
         private void radioButton_CheckedChangedB(object sender, EventArgs e)
         {
             RadioButton selectedRadioButton = sender as RadioButton;
@@ -189,6 +200,7 @@ namespace WinFormsApp2
 
 
         private int scoreC = 0;　//点数を加算していく変数
+        //Cの領域の質問を回答する時のラジオボタン１～４の計算方法
         private void radioButton_CheckedChangedC(object sender, EventArgs e)
         {
             RadioButton selectedRadioButton = sender as RadioButton;
@@ -256,6 +268,8 @@ namespace WinFormsApp2
 
 
         private int scoreD = 0;　//点数を加算していく変数
+
+        //Dの領域の質問を回答する時のラジオボタン１～４の計算方法
         private void radioButton_CheckedChangedD(object sender, EventArgs e)
         {
             RadioButton selectedRadioButton = sender as RadioButton;
